@@ -20,6 +20,12 @@ class Game { // creates game class
        return phrasesArray;
 
     }
+    getRandomPhrase() { //generates random integer from 0-4 the uses random the integer to select the phrase indexed at that number in the array
+    const index = Math.floor(Math.random() * Math.floor(this.phrases.length)); // generates random integer from 0 to one less than the array length
+    return game.phrases[index]; 
+    }
 }
+
+
  
 
