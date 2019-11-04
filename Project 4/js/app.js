@@ -3,11 +3,17 @@
  * app.js */
 
 
- const testPhrase = new Phrase("PHRASE SHOULD BE LOWER CASE");
- console.log(testPhrase);
+//  const testPhrase = new Phrase("PHRASE SHOULD BE LOWER CASE");
+//  console.log(testPhrase);
 
- const testGame = new Game("GAME SHOULD BE LOWER CASE");
- console.log(testGame);
+//  const testGame = new Game("GAME SHOULD BE LOWER CASE");
+//  console.log(testGame);
 
+//  const phrase = new Phrase('Life is like a box of chocolates');
+//  console.log(`Phrase - phrase: ${phrase.phrase}`);
 
- created phrase and game class then tested both by instatiating an object in each class and console logging
+const game = new Game();
+game.phrases.forEach((phrase, index) => {
+console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
+});
+
