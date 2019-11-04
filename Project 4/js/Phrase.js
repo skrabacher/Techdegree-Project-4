@@ -8,39 +8,21 @@
      }
 
      addPhraseToDisplay() {
-    //   let space = document.createElement(li).addClass("space");
-    //   let iteratedLetter = "h";///pulled from for each function that will iterate through the phrase???
-    //   let letter = document.createElement(li).addClass("hide letter " + iteratedLetter).textContent = iteratedLetter;
       let phraseCharactersArray = this.phrase.split(''); //selects the phrase and returns array consisting of each character in the phrase
       phraseCharactersArray.forEach(character => {
-          if (character === '') { //if the character is a space
-           // FIRST ATTEMPT
-            //let spaceCharacter = document.createElement(li).addClass("space").textContent = character;// create html space character
-            //document.getElementById("phrase").appendChild(spaceCharacter);// append to <div id="phrase" class="section"> <ul>
-           //SECOND ATTEMPT
-            // const $spaceCharacter = "<li class='space'> </li>"
-            // document.getElementById("phrase").appendChild($spaceCharacter);// append to <div id="phrase" class="section"> <ul>
-           //THIRD ATTEMPT 
+          if (character === " ") { //if the character is a space
             const li = document.createElement('li'); // creates LI node
             li.className = 'space'; // adds space class to li node
             li.textContent = ' '; //defines li text content
             document.querySelector('#phrase ul').appendChild(li) // appends li to 
 
           } else {
-             //let letterCharacter = document.createElement(li).addClass("hide letter " + character).textContent = character; //create html letter character
-             //const $letterCharacter = `<li class='hide letter ${character}'>${character}</li>`
-             //document.getElementById("phrase").appendChild($letterCharacter);// append to <div id="phrase" class="section"> <ul>
              const li = document.createElement('li'); // creates LI node
              li.className = `hide letter ${character}`; // adds letter class to li node
              li.textContent = `${character}`; //defines li text content
              document.querySelector('#phrase ul').appendChild(li) // appends li to 
           }
       });
-
-    //   const $zipErrorMessage = "<h3 class='zip'>*Zip code must be 5 digits.</h3>"
-    //   $('label[for="zip"]').append($zipErrorMessage);
-       
-
      }
      
  }
