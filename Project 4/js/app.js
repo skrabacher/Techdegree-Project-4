@@ -32,8 +32,19 @@
 // const game = new Game();
 // game.getRandomPhrase().addPhraseToDisplay();
 
-const game = new Game();
-game.startGame();
-console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+// const game = new Game();
+// game.startGame();
+// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+
+//Start Button Event Listener (initiates new game when button is clicked)
+let game;
+let startButton = document.getElementById("btn__reset"); //selects start button in the html file
+startButton.addEventListener('click', function(e){ //on click 
+    game = new Game(); // instantiates a new object in the Game class
+    game.startGame(); // //hides the start screen, gets a phrase for the new game and displays gameboard for user
+  });
+  /*
+
+*/
 
 
