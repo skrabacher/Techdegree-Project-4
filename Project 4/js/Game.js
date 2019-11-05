@@ -32,7 +32,12 @@ class Game { // creates game class
         console.log(phraseObject);
         this.activePhrase = phraseObject; //assigns the selected phrase to the activePhrase property in the Game Class
         this.activePhrase.addPhraseToDisplay(); //displays corresponding phrase gameboard
+        console.log(this.activePhrase);
     }
+
+    // handleInteraction() {
+
+    // }
 
  
 }
