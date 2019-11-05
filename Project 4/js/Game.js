@@ -35,12 +35,56 @@ class Game { // creates game class
         console.log(this.activePhrase);
     }
 
+    checkForWin() { //4th try idea: use reduce method to convert matchedLettersLi to one giant string, then use the includes method on that string to determine if 'hide' is in the string. if hide is not in the string then the user has won
+        
+        //THIRD TRY
+        let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
+        matchedLettersLi.forEach(li => { //iterates through each LI node
+            console.log(li.className.toString()); //
+            let liClassString = li.className.toString(); //gets class value and converts to string so that includes method  can be used
+            console.log(liClassString);
+        if (liClassString.includes('hide') ) { //if LI node's class contains 'hide' then use has not won, return FALSE. else if there are no hide classes then user has won return TRUE
+            return false;
+        } else {
+            return true;
+        }
+        });
+        
+        //SECOND TRY
+        // let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
+        // matchedLettersLi = matchedLettersLi.values();
+        // console.log(matchedLettersLi);
+
+        // if (matchedLettersLi.includes('hide')) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
+
+        //FIRST TRY
+    //     let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
+    //     console.log(matchedLettersLi);
+    //     matchedLettersLi.forEach(li => { //iterates through each LI element
+    //     console.log(li.className);
+    //     if (li.className !== 'show' && li.className !== 'space') { //if LI's class name is not show or space, then user has not won
+    //       return false;
+    //     } else {
+    //         return true;
+    //     }
+    //   });
+     }
+    }
+
+//     `checkForWin()`: This method checks to see if the player has revealed all of the
+// letters in the active phrase. (return Boolean value)
+
+
     // handleInteraction() {
 
     // }
 
  
-}
+
 
 
  
