@@ -38,19 +38,25 @@
       });
      }
      
-    //  showMatchedLetter(letter) { 
-    //   let matchedLetters = document.querySelectorAll(`.hide letter ${letter}`)
-    //   matchedLetters.removeClass();
-    //   matchedLetters.addClass(`show letter ${letter}`);
-
-    //  }
+     showMatchedLetter(letter) { //method receives the letter the user selected as a parameter
+      let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects li's that represent each character in the phrase
+      matchedLettersLi.forEach(li => { //iterates through each LI element
+        if (li.innerHTML === letter) { //if LI element's innerHTML is the same as the letter the user selected
+          li.className = 'show'; //show the li on the page(by changing it's css class)
+        }
+      });
+      //matchedLetters.classList.remove(`hide letter ${letter}`);
+      // matchedLetters.className = matchedLetters.className.replace(/\b`.hide letter ${letter}`\b/g, "");
+      // matchedLetters.addClass(`show letter ${letter}`);
+      //matchedLetters.classList.add(`show letter`);
+     }
  }
 //Reveals the letter(s) on the board that matches the player's selection. 
 // To reveal the matching letter(s), select all of the letter DOM elements
 //  that have a CSS class name that matches the selected letter and replace 
 //  each selected element's `hide` CSS class with the `show` CSS class.
 
-{/* <div id="phrase" class="section">
+/* <div id="phrase" class="section">
     <ul>
         <li class="hide letter h">h</li>
         <li class="hide letter o">o</li>
@@ -64,7 +70,7 @@
         <li class="hide letter o">o</li>
         <li class="hide letter u">u</li>
     </ul>
-</div> */}
+</div> */
 
 
 // \\({i})//
