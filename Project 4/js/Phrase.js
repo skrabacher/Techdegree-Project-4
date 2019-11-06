@@ -33,13 +33,15 @@
       console.log("in the phrase.checkLetter method");
       let phraseCharactersArray = this.phrase.split(''); //converts phrase to array
       console.log(phraseCharactersArray);
-      phraseCharactersArray.forEach(character => {
-        if (character === letter) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+      return phraseCharactersArray.includes(letter);
+      
+      // phraseCharactersArray.forEach(character => {
+      //   if (character === letter) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // });
      }
      
      showMatchedLetter(letter) { //method receives the letter the user selected as a parameter and if the letter is in the phrase it will reveal the letter on the game board
