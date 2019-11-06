@@ -62,10 +62,7 @@ screenKeyboard.forEach(key => { //adds event listener to each individul keyboard
     key.addEventListener('click', (event) => {
         console.log(event.target);
         clickedKey = event.target; //returns html of the keyboard button that was clicked(e.g. <button class="key">q</button>)
-        console.log(clickedKey.innerHTML);
-        clickedKeyStringValue = clickedKey.innerHTML; //returns the letter of the keyboard button that was clicked as a string value
-        console.log(clickedKeyStringValue);
-        game.handleInteraction(clickedKeyStringValue);
+        game.handleInteraction(clickedKey);
     });
 })
 

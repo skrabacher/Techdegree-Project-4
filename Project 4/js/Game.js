@@ -111,15 +111,22 @@ class Game { // creates game class
         }
     }
     
-    handleInteraction(clickedKeyStringValue) { // takes parameter from On Screen Keyboard Event Listener in app.js file
-        console.log(clickedKeyStringValue);
-
+    handleInteraction(clickedKey) { // takes parameter from On Screen Keyboard Event Listener in app.js file
+        // console.log(clickedKey); // testing to ensure parameter was passed from app.js
+        let clickedKeyStringValue = clickedKey.innerHTML.toString(); //returns the letter of the keyboard button that was clicked as a string value
+        clickedKey.disabled = true; // disables the key so the user can not click it again
+        // console.log(typeof clickedKeyStringValue, clickedKeyStringValue); // returns: string q
+        // console.log(this.activePhrase);
+        // console.log(phrase.checkLetter(clickedKeyStringValue));
+        console.log(game.activePhrase.checkLetter(clickedKeyStringValue)); //NEED THIS TO RETURN false or true
+        if (game.activePhrase.checkLetter(clickedKeyStringValue) === false) { // if the phrase does not include the guessed letter 
+            clickedKey.ClassName = 'wrong'; //turns the key orange if not part of phrase
+        } else if (this.activePhrase.checkLetter(clickedKeyStringValue) === true) {
+            clickedKey.ClassName = 'chosen'; //turns the key dark grey if it is in the phrase
+        }
     }
+            
 }
-    
-
-  
-
     // handleInteraction(): this method controls most of the game logic. 
     // It checks to see if the button clicked by the player matches a letter in the 
     // phrase, and then directs the game based on a correct or incorrect guess. 

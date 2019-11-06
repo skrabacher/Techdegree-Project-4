@@ -24,9 +24,13 @@
           }
       });
      }
-
+/**
+* Checks if passed letter is in phrase
+* @param (string) letter - Letter to check
+*/
      checkLetter(letter) { //Checks to see if the letter selected by the player matches a letter in the phrase.
-      console.log("in the checkLetter method");
+      console.log(letter);
+      console.log("in the phrase.checkLetter method");
       let phraseCharactersArray = this.phrase.split(''); //converts phrase to array
       console.log(phraseCharactersArray);
       phraseCharactersArray.forEach(character => {
