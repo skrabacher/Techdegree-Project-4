@@ -109,17 +109,30 @@ class Game { // creates game class
             startScreenOverlay.className = 'lose'; // formats start page with css class for lose
             document.querySelector('#game-over-message').innerHTML = 'Game Over'; // defines text content of the loss message and selects element where it will be displayed
         }
+    }
+    
+    handleInteraction(clickedKeyStringValue) { // takes parameter from On Screen Keyboard Event Listener in app.js file
+        console.log(clickedKeyStringValue);
 
     }
-
-     }
+}
     
 
-    // handleInteraction() {
+  
 
-    // }
-
- 
+    // handleInteraction(): this method controls most of the game logic. 
+    // It checks to see if the button clicked by the player matches a letter in the 
+    // phrase, and then directs the game based on a correct or incorrect guess. 
+    // This method should:
+    //         - Disable the selected letter’s onscreen keyboard button.
+    //         - If the phrase does not include the guessed letter, add 
+    //             the wrong CSS class to the selected letter's keyboard 
+    //             button and call the removeLife() method.
+    //         - If the phrase includes the guessed letter, add the chosen 
+    //             CSS class to the selected letter's keyboard button, call 
+    //             the showMatchedLetter() method on the phrase, and then call 
+    //             the checkForWin() method. If the player has won the game, 
+    //             also call the gameOver() method.
 
 
 
