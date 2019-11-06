@@ -22,7 +22,7 @@ class Game { // creates game class
     }
     getRandomPhrase() { //generates random integer from 0-4 the uses random the integer to select the phrase indexed at that number in the array
         const index = Math.floor(Math.random() * Math.floor(this.phrases.length)); // generates random integer from 0 to one less than the array length
-        return game.phrases[index]; //returns one random phrase as a string
+        return game.phrases[index]; //returns one random phrase from the phrasesArray and returns the phrase as a string
     }
 
     startGame() { //hides the start screen, gets a phrase for the new game and displays gameboard for user
@@ -85,7 +85,7 @@ class Game { // creates game class
                 //});
 
     removeLife() {
-        this.missed = this.missed + 1; //adds 1 to the missed property
+        this.missed = this.missed + 1; //adds 1 to the missed property, effectively removing a life from the user
         let heartCount = this.missed - 1; //used for indexing so index position of the heart will always be one less than missed (aka the amount of hearts lost)
         console.log(this.missed);
         let hearts = document.querySelectorAll("#scoreboard ol img"); //selects and creates nodelist of the heart images
@@ -94,18 +94,24 @@ class Game { // creates game class
         hearts[heartCount].src = "images/lostHeart.png"; //finds the node at the current heart count and replaces the alive heart with a lost heart image
          if (this.missed === 5) { // if user loses all 5 hearts then game is over
              console.log('game over');
-             gameOver();
+             this.gameOver(); //runs the game over method in the game class
          }
     }
 
-    
-  
+    gameOver(gameWon) {
+        const startScreenOverlay = document.querySelector('#overlay'); //selects start screen overlay element
+        if (gameWon === true) {
+            startScreenOverlay.style.display = 'block'; //shows start screen overlay
+            startScreenOverlay.className = 'win'; // formats start page with css class for win
+            document.querySelector('#game-over-message').innerHTML = 'You Won!'; // defines text content of the win message and selects element where it will be displayed
+        } else {
+            startScreenOverlay.style.display = 'block'; //shows start screen overlay
+            startScreenOverlay.className = 'lose'; // formats start page with css class for lose
+            document.querySelector('#game-over-message').innerHTML = 'Game Over'; // defines text content of the loss message and selects element where it will be displayed
+        }
 
+    }
 
-    /*`gameOver()`: This method displays the original start screen overlay, and
-    depending on the outcome of the game, updates the overlay `h1` element with a
-    friendly win or loss message, and replaces the overlay’s `start` CSS class with
-    either the `win` or `lose` CSS class. */
      }
     
 
