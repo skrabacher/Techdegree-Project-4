@@ -43,12 +43,15 @@
       //   }
       // });
      }
-     
+     /**
+* Displays passed letter on screen after a match is found
+* @param (string) letter - Letter to display
+*/
      showMatchedLetter(letter) { //method receives the letter the user selected as a parameter and if the letter is in the phrase it will reveal the letter on the game board
       let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
       matchedLettersLi.forEach(li => { //iterates through each LI element
         if (li.innerHTML === letter) { //if LI element's innerHTML is the same as the letter the user selected
-          li.className = 'show'; //show the LI on the page(by changing it's css class)
+          li.classList.add('show'); //show the LI on the page(by changing it's css class)
         }
       });
      }

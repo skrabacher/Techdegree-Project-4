@@ -39,8 +39,8 @@ class Game { // creates game class
         //FOURTH TRY
         let allLetters = document.querySelectorAll('.letter').length;
         let shownLetters = document.querySelectorAll('.show').length;
-        console.log(document.querySelectorAll('.letter').length);
-        console.log(document.querySelectorAll('.show').length);
+        console.log("number of letters: ", document.querySelectorAll('.letter').length);
+        console.log("number of shown letters: ", document.querySelectorAll('.show').length);
         if (allLetters === shownLetters) { //if LI node's class contains 'hide' then use has not won, return FALSE. else if there are no hide classes then user has won return TRUE
             return true;
         } else {
@@ -120,11 +120,17 @@ class Game { // creates game class
         // console.log(phrase.checkLetter(clickedKeyStringValue));
         console.log(game.activePhrase.checkLetter(clickedKeyStringValue)); //NEED THIS TO RETURN false or true
         if (game.activePhrase.checkLetter(clickedKeyStringValue) === false) { // if the phrase does not include the guessed letter 
-            //clickedKey.ClassName = 'wrong'; //turns the key orange if not part of phrase
-            clickedKey.classList.add('wrong');
-        } else if (this.activePhrase.checkLetter(clickedKeyStringValue) === true) {
-            //clickedKey.ClassName = 'chosen'; //turns the key dark grey if it is in the phrase
-            clickedKey.classList.add('chosen');
+            clickedKey.classList.add('wrong');//turns the key orange if not part of phrase
+            game.removeLife();//call the removeLife() method.
+        } else if (game.activePhrase.checkLetter(clickedKeyStringValue) === true) {
+            clickedKey.classList.add('chosen'); //turns the key dark grey if it is in the phrase
+            game.activePhrase.showMatchedLetter(clickedKeyStringValue);//call the showMatchedLetter() method on the phrase
+            console.log(game.checkForWin());//then call the checkForWin() method
+            if (game.checkForWin() === true) {
+                console.log('check for win TRUE')
+                game.gameOver(game.checkForWin());
+            } // If the player has won the game, also call the gameOver() method.
+
 
         }
     }
