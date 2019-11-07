@@ -120,9 +120,12 @@ class Game { // creates game class
         // console.log(phrase.checkLetter(clickedKeyStringValue));
         console.log(game.activePhrase.checkLetter(clickedKeyStringValue)); //NEED THIS TO RETURN false or true
         if (game.activePhrase.checkLetter(clickedKeyStringValue) === false) { // if the phrase does not include the guessed letter 
-            clickedKey.ClassName = 'wrong'; //turns the key orange if not part of phrase
+            //clickedKey.ClassName = 'wrong'; //turns the key orange if not part of phrase
+            clickedKey.classList.add('wrong');
         } else if (this.activePhrase.checkLetter(clickedKeyStringValue) === true) {
-            clickedKey.ClassName = 'chosen'; //turns the key dark grey if it is in the phrase
+            //clickedKey.ClassName = 'chosen'; //turns the key dark grey if it is in the phrase
+            clickedKey.classList.add('chosen');
+
         }
     }
             
