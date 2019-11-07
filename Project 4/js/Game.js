@@ -21,11 +21,13 @@ class Game { // creates game class
 
     }
     getRandomPhrase() { //generates random integer from 0-4 the uses random the integer to select the phrase indexed at that number in the array
+        console.log('in getRandomPhrase method');
         const index = Math.floor(Math.random() * Math.floor(this.phrases.length)); // generates random integer from 0 to one less than the array length
         return game.phrases[index]; //returns one random phrase from the phrasesArray and returns the phrase as a string
     }
 
     startGame() { //hides the start screen, gets a phrase for the new game and displays gameboard for user
+        console.log('in startGame method');
         const startScreenOverlay = document.querySelector('#overlay');
         startScreenOverlay.style.display = 'none'; //hides start screen overlay
         let phraseObject = this.getRandomPhrase(); //selects a phrase object for the new game
@@ -37,6 +39,7 @@ class Game { // creates game class
 
     checkForWin() { 
         //FOURTH TRY
+        console.log('in checkForWin method');
         let allLetters = document.querySelectorAll('.letter').length;
         let shownLetters = document.querySelectorAll('.show').length;
         console.log("number of letters: ", document.querySelectorAll('.letter').length);
@@ -85,6 +88,7 @@ class Game { // creates game class
                 //});
 
     removeLife() {
+        console.log('in removeLife method');        
         this.missed = this.missed + 1; //adds 1 to the missed property, effectively removing a life from the user
         let heartCount = this.missed - 1; //used for indexing so index position of the heart will always be one less than missed (aka the amount of hearts lost)
         console.log(this.missed);
@@ -99,6 +103,7 @@ class Game { // creates game class
     }
 
     gameOver(gameWon) {
+        console.log('in gameOver method');        
         const startScreenOverlay = document.querySelector('#overlay'); //selects start screen overlay element
         if (gameWon === true) {
             startScreenOverlay.style.display = 'block'; //shows start screen overlay
@@ -112,6 +117,7 @@ class Game { // creates game class
     }
     
     handleInteraction(clickedKey) { // takes parameter from On Screen Keyboard Event Listener in app.js file
+        console.log('in handleInteraction method');        
         // console.log(clickedKey); // testing to ensure parameter was passed from app.js
         let clickedKeyStringValue = clickedKey.innerHTML.toString(); //returns the letter of the keyboard button that was clicked as a string value
         clickedKey.disabled = true; // disables the key so the user can not click it again
@@ -134,22 +140,38 @@ class Game { // creates game class
 
         }
     }
-            
-}
-    // handleInteraction(): this method controls most of the game logic. 
-    // It checks to see if the button clicked by the player matches a letter in the 
-    // phrase, and then directs the game based on a correct or incorrect guess. 
-    // This method should:
-    //         - Disable the selected letter’s onscreen keyboard button.
-    //         - If the phrase does not include the guessed letter, add 
-    //             the wrong CSS class to the selected letter's keyboard 
-    //             button and call the removeLife() method.
-    //         - If the phrase includes the guessed letter, add the chosen 
-    //             CSS class to the selected letter's keyboard button, call 
-    //             the showMatchedLetter() method on the phrase, and then call 
-    //             the checkForWin() method. If the player has won the game, 
-    //             also call the gameOver() method.
+     
 
+                    // let element = document.getElementById("top");
+                    // while (element.firstChild) {
+                    // element.removeChild(element.firstChild);
+                    // }
+
+    resetGame() {
+        console.log("in resetGame Method");
+        let phraseUL = document.querySelectorAll('#phrase ul li'); //selects all list items that represent the board game phrase letters
+        console.log(phraseUL);
+        phraseUL.forEach (letter => {
+            letter.parentNode.removeChild(letter);
+        });
+        // console.log(phraseUL.firstChild);
+        // while (phraseUL.firstChild) {
+        //     phraseUL.removeChild(element.firstChild);
+        // }
+    }
+        // let element = document.querySelectorAll('.hide');
+        // console.log(element);
+        // element.forEach(letter => {letter.classList.remove('hide');})
+        //element.classList.remove('hide');//Remove all `li` elements from the Phrase `ul` element.
+        ///*SPACE SELECTOR*/.classList.remove('hide');
+
+        //Enable all of the onscreen keyboard buttons and update each to use the `key` CSS class,
+            //and not use the `chosen` or `wrong` CSS classes.
+        //Reset all of the heart images (i.e. the player's lives) in the scoreboard at the bottom of
+            //the gameboard to display the `liveHeart.png` image.
+    
+}
+    
 
 
  

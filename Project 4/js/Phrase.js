@@ -8,6 +8,7 @@
      }
 
      addPhraseToDisplay() {
+      console.log('in addPhraseToDisplay method');        
       let phraseCharactersArray = this.phrase.split(''); //selects the phrase and returns array consisting of each character in the phrase
       phraseCharactersArray.forEach(character => {
           if (character === " ") { //if the character is a space
@@ -29,6 +30,7 @@
 * @param (string) letter - Letter to check
 */
      checkLetter(letter) { //Checks to see if the letter selected by the player matches a letter in the phrase.
+      console.log('in checkLetter method');        
       console.log(letter);
       console.log("in the phrase.checkLetter method");
       let phraseCharactersArray = this.phrase.split(''); //converts phrase to array
@@ -48,6 +50,7 @@
 * @param (string) letter - Letter to display
 */
      showMatchedLetter(letter) { //method receives the letter the user selected as a parameter and if the letter is in the phrase it will reveal the letter on the game board
+      console.log('in showMatchedLetter method');        
       let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
       matchedLettersLi.forEach(li => { //iterates through each LI element
         if (li.innerHTML === letter) { //if LI element's innerHTML is the same as the letter the user selected
