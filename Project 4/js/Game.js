@@ -40,8 +40,8 @@ class Game { // creates game class
     checkForWin() { 
         //FOURTH TRY
         console.log('in checkForWin method');
-        let allLetters = document.querySelectorAll('.letter').length;
-        let shownLetters = document.querySelectorAll('.show').length;
+        let allLetters = document.querySelectorAll('.letter').length; //get number of letters in the phrase
+        let shownLetters = document.querySelectorAll('.show').length; //gets number of revealed letters in the phrase
         console.log("number of letters: ", document.querySelectorAll('.letter').length);
         console.log("number of shown letters: ", document.querySelectorAll('.show').length);
         if (allLetters === shownLetters) { //if LI node's class contains 'hide' then use has not won, return FALSE. else if there are no hide classes then user has won return TRUE
@@ -50,42 +50,6 @@ class Game { // creates game class
             return false;
         }
     };
-    
-                    //THIRD TRY
-                    // let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
-                    // matchedLettersLi.forEach(li => { //iterates through each LI node
-                    //     console.log(li.className.toString()); //
-                    //     let liClassString = li.className.toString(); //gets class value and converts to string so that includes method  can be used
-                    //     console.log(liClassString);
-                    // if (liClassString.includes('hide') ) { //if LI node's class contains 'hide' then use has not won, return FALSE. else if there are no hide classes then user has won return TRUE
-                    //     return false;
-                    // } else {
-                    //     return true;
-                    // }
-                    // });
-                    
-                    //SECOND TRY
-                    // let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
-                    // matchedLettersLi = matchedLettersLi.values();
-                    // console.log(matchedLettersLi);
-
-                    // if (matchedLettersLi.includes('hide')) {
-                    //     return false;
-                    // } else {
-                    //     return true;
-                    // }
-
-                    //FIRST TRY
-                    //let matchedLettersLi = document.querySelectorAll('#phrase ul li');// selects LI's that represent each character in the phrase
-                    //console.log(matchedLettersLi);
-                    //matchedLettersLi.forEach(li => { //iterates through each LI element
-                    //console.log(li.className);
-                    //if (li.className !== 'show' && li.className !== 'space') { //if LI's class name is not show or space, then user has not won
-                    //  return false;
-                    //} else {
-                    //    return true;
-                    //}
-                //});
 
     removeLife() {
         console.log('in removeLife method');        
@@ -136,40 +100,31 @@ class Game { // creates game class
                 console.log('check for win TRUE')
                 game.gameOver(game.checkForWin());
             } // If the player has won the game, also call the gameOver() method.
-
-
         }
     }
      
-
-                    // let element = document.getElementById("top");
-                    // while (element.firstChild) {
-                    // element.removeChild(element.firstChild);
-                    // }
-
     resetGame() {
         console.log("in resetGame Method");
+
+        //removes the old phrase from the game board
         let phraseUL = document.querySelectorAll('#phrase ul li'); //selects all list items that represent the board game phrase letters
         console.log(phraseUL);
-        phraseUL.forEach (letter => {
+        phraseUL.forEach (letter => { //Remove all `li` elements from the Phrase `ul` element.
             letter.parentNode.removeChild(letter);
         });
-        // console.log(phraseUL.firstChild);
-        // while (phraseUL.firstChild) {
-        //     phraseUL.removeChild(element.firstChild);
-        // }
+        // resets the onscreen keyboard so that keys are all enabled and all same gray color
+        let onscreenKeyboardButtons = document.querySelectorAll('.keyrow button'); // selects all keyboard buton elements
+        console.log(onscreenKeyboardButtons);
+        onscreenKeyboardButtons.forEach(key => { // iterates through each button
+            key.removeAttribute('disabled'); // removes disabled attribute so that the key can be clicked on again
+            key.setAttribute('class', 'key'); // defines class as "key" for all keys, effectively removing chosen and wrong class
+        })
+        //resets all the heart images to blue hearts (full life)
+        let hearts = document.querySelectorAll('.tries img');
+        hearts.forEach( heart => {
+            heart.setAttribute('src','images/liveHeart.png');
+        })
     }
-        // let element = document.querySelectorAll('.hide');
-        // console.log(element);
-        // element.forEach(letter => {letter.classList.remove('hide');})
-        //element.classList.remove('hide');//Remove all `li` elements from the Phrase `ul` element.
-        ///*SPACE SELECTOR*/.classList.remove('hide');
-
-        //Enable all of the onscreen keyboard buttons and update each to use the `key` CSS class,
-            //and not use the `chosen` or `wrong` CSS classes.
-        //Reset all of the heart images (i.e. the player's lives) in the scoreboard at the bottom of
-            //the gameboard to display the `liveHeart.png` image.
-    
 }
     
 
